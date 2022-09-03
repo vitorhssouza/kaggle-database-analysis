@@ -93,7 +93,7 @@ def escolha_opcao(opcao: int) -> None:
         sleep(2)
         print(dados.venda_america[:10])
         layout = Layout(titulo='Top 10 - Fabricante na America do Norte', tamanho=(15, 6),
-                        tamanho_titulo=16, y_label='Vendas')
+                        tamanho_titulo=16, y_label='Vendas', x_label='Top 10 Editora')
         layout.layout_venda_america()
         print('Voltando ao menu')
         sleep(2)
@@ -103,7 +103,7 @@ def escolha_opcao(opcao: int) -> None:
         sleep(2)
         print(dados.venda_europa[:10])
         layout = Layout(titulo='Top 10 - Fabricante na Europa', tamanho=(15, 6),
-                        tamanho_titulo=16, y_label='Vendas')
+                        tamanho_titulo=16, y_label='Vendas', x_label='Top 10 Editora')
         layout.layout_venda_europa()
         print('Voltando ao menu')
         sleep(2)
@@ -113,7 +113,7 @@ def escolha_opcao(opcao: int) -> None:
         sleep(2)
         print(dados.venda_japao[:10])
         layout = Layout(titulo='Top 10 - Fabricante no Japão', tamanho=(15, 6),
-                        tamanho_titulo=16, y_label='Vendas')
+                        tamanho_titulo=16, y_label='Vendas', x_label='Top 10 Editora')
         layout.layout_venda_japao()
         print('Voltando ao menu')
         sleep(2)
@@ -123,7 +123,7 @@ def escolha_opcao(opcao: int) -> None:
         sleep(2)
         print(dados.venda_mundo[:10])
         layout = Layout(titulo='Top 10 - Fabricante no Restante do Mundo', tamanho=(15, 6),
-                        tamanho_titulo=16, y_label='Vendas')
+                        tamanho_titulo=16, y_label='Vendas', x_label='Top 10 Editora')
         layout.layout_venda_mundo()
         print('Voltando ao menu')
         sleep(2)
