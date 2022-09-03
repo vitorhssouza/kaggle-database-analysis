@@ -1,7 +1,4 @@
 import pandas as pd
-from sklearn.preprocessing import LabelEncoder
-
-funcao_label = LabelEncoder()
 
 
 class BaseDados:
@@ -40,7 +37,6 @@ class BaseDados:
         self.__vendas_mundo = self.__base.groupby(by=['Publisher']).sum().reset_index()[
                                 ['Publisher', 'Rest of World']].sort_values('Rest of World', ascending=False)
 
-
     @property
     def basedados(self: object) -> None:
         """Base de dados completa """
@@ -58,30 +54,37 @@ class BaseDados:
 
     @property
     def descricao(self: object) -> None:
+        """Retorna a descrição da base de dados"""
         return self.__basedados.describe()
 
     @property
     def info(self: object) -> None:
+        """Retorna todas as informações da base de dados"""
         return self.__basedados.info()
 
     @property
     def hea(self):
+        """Retorna os 5 primeiros registros da base de dados"""
         return self.__basedados.head()
 
     @property
     def america(self: object) -> list:
+        """Retorna a proporção de 100% da america do norte relacionado ao global"""
         return self.__america
 
     @property
     def europeu(self: object) -> list:
+        """Retorna a proporção de 100% do europa relacionado ao global"""
         return self.__europa
 
     @property
     def japao(self: object) -> list:
+        """Retorna a proporção de 100% do japao relacionado ao global"""
         return self.__japao
 
     @property
     def mundo(self: object) -> list:
+        """Retorna a proporção de 100% do restante do mundo relacionado ao global"""
         return self.__mundo
 
     @property
