@@ -1,5 +1,5 @@
 from mercado_game.objeto_dados import BaseDados
-from mercado_game.objeto_grafico import Layout
+from mercado_game.objeto import Layout
 
 from time import sleep
 
