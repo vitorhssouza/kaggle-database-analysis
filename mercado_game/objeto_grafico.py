@@ -151,36 +151,31 @@ class Layout:
             plt.xticks(rotation=45, ha='right', fontsize=5)
 
     def layout_relatorio(self, opcao: int = 1):
+        fig, ax = plt.subplots(figsize=(self.__tamanho))
+        ax.set_facecolor(self.__cor_fundo)
+        fig.set_facecolor(self.__cor_fundo)
+        plt.style.use(self.__estilo)
+        plt.suptitle(self.__titulo, fontsize=18, color='#404040', fontweight=400)
         if opcao == 1:
-            fig, ax = plt.subplots(figsize=(self.__tamanho))
-            ax.set_facecolor(self.__cor_fundo)
-            fig.set_facecolor(self.__cor_fundo)
-            plt.style.use(self.__estilo)
-            plt.suptitle(self.__titulo, fontsize=18, color='#404040', fontweight=400)
             grafico_relatorio = GraficoRelatorio()
             grafico_relatorio.relatorio1()
             plt.subplots_adjust(hspace=0.35, wspace=0.15)
             rodape = '''
-              Esse relatório foi elaborado no treinamento "Python para Análise de Dados"
-              está dispónivel no canal do youtube @Data Viking
-              by: Vitor Souza
-            '''
+                                 Esse relatório foi elaborado no treinamento "Python para Análise de Dados"
+                                 está dispónivel no canal do youtube @Data Viking
+                                 by: Vitor Souza
+                               '''
             fig.text(0.5, -0.01, rodape, ha='center', va='bottom', size=12, color='#938ca1')
             plt.show()
         else:
-            fig, ax = plt.subplots(figsize=(self.__tamanho))
-            ax.set_facecolor(self.__cor_fundo)
-            fig.set_facecolor(self.__cor_fundo)
-            plt.style.use(self.__estilo)
-            plt.suptitle(self.__titulo, fontsize=18, color='#404040', fontweight=400)
             grafico_relatorio2 = GraficoRelatorio()
             grafico_relatorio2.relatorio2()
             plt.subplots_adjust(hspace=0.35, wspace=0.15)
             rodape = '''
-                          Esse relatório foi elaborado no treinamento "Python para Análise de Dados"
-                          está dispónivel no canal do youtube @Data Viking
-                          by: Vitor Souza
-                        '''
+                                             Esse relatório foi elaborado no treinamento "Python para Análise de Dados"
+                                             está dispónivel no canal do youtube @Data Viking
+                                             by: Vitor Souza
+                                           '''
             fig.text(0.5, -0.01, rodape, ha='center', va='bottom', size=12, color='#938ca1')
 
 
