@@ -132,7 +132,8 @@ def escolha_opcao(opcao: int) -> None:
         print('Imprimindo os relátorio contendo os gráficos')
         sleep(2)
         layout_relatorio = Layout(tamanho=(18, 15), cor_fundo='#f5f5f5', estilo='seaborn',
-                                  titulo='Python para Análise de Dados \n Projeto prático 5 - Análise Mercado de Games PS4')
+                                  titulo='Python para Análise de Dados \n Projeto prático 5 - Análise Mercado de Games'
+                                         ' PS4')
         layout_relatorio.layout_relatorio()
         menu()
     elif opcao == 13:
