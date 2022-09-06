@@ -175,18 +175,6 @@ class Grafico(BaseDados):
 
     def __init__(self: object, basedados: str) -> None:
         super().__init__(basedados)
-        self.__grafico_bar = ''
-        self.__grafico_distribuicao = ''
-        self.__grafico_boxplot = ''
-        self.__grafico_distribuicao_continente = ''
-        self.__grafico_continente_america = ''
-        self.__grafico_continente_europa = ''
-        self.__grafico_continente_japao = ''
-        self.__grafico_continente_mundo = ''
-        self.__grafico_vendas_america = ''
-        self.__grafico_vendas_europa = ''
-        self.__grafico_vendas_japao = ''
-        self.__grafico_vendas_mundo = ''
 
     def grafico_bar(self: object) -> None:
         self.__grafico_bar = sns.barplot(data=self._BaseDados__base, x='Year', y='Global',
