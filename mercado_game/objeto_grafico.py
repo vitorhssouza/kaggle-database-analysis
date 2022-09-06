@@ -74,7 +74,7 @@ class Layout:
             grafico_continente = Grafico('PS4_GamesSales.csv')
             grafico_continente.grafico_distribuicao_continente()
             plt.legend(['America N', 'Europa', ' Japão', 'Mundo'], loc='upper left', bbox_to_anchor=(0.225, -0.089), ncol=4)
-            plt.show()
+            #plt.show()
         else:
             plt.title(self.__titulo, loc='left', fontsize=10)
             #plt.xlabel(self.__x_label, fontsize=7)
@@ -217,7 +217,7 @@ class Grafico(BaseDados):
 
         return self.__grafico_boxplot
 
-    def grafico_distribuicao_continente(self: object) -> None:
+    def grafico_distribuicao_continente(self: object, opcao: int = 1) -> None:
         largura_barra = 0.85
 
         grupos = [0, 1, 2, 3, 4, 5]
@@ -230,7 +230,7 @@ class Grafico(BaseDados):
                          color='#f9bc86', edgecolor='white')
 
         # plot japão
-        self.__grafico_continente_japao =plt.bar(grupos, self._BaseDados__japao, bottom=[a + b for a, b in zip(self._BaseDados__america, self._BaseDados__europa)],
+        self.__grafico_continente_japao = plt.bar(grupos, self._BaseDados__japao, bottom=[a + b for a, b in zip(self._BaseDados__america, self._BaseDados__europa)],
                         width=largura_barra, color='#a3acff', edgecolor='white')
 
         # plot resto do mundo
@@ -240,9 +240,7 @@ class Grafico(BaseDados):
 
         plt.xticks(grupos, self._BaseDados__analise['Year'])
 
-        total = [self.__grafico_continente_america, self.__grafico_continente_europa, self.__grafico_continente_japao,
-                 self.__grafico_continente_mundo]
-        return total
+        return plt.show()
 
     def grafico_vendas_america(self: object, opcao: int = 1) -> None:
         if opcao == 1:
