@@ -1,5 +1,4 @@
 from mercado_game.objeto_dados import BaseDados
-from time import sleep
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -296,7 +295,6 @@ class GraficoRelatorio:
                 elif c == 2:
                     layout_box = Layout(titulo='Análise Da Distribuição Das Vendas Global (mi)', y_label='Quantidade Vendas')
                     layout_box.layout_boxplot(2)
-
                 elif c == 5:
                     layout_distribuicao = Layout(titulo='Distribuição das Vendas Globais',
                                                  y_label='Density', x_label='Global')
@@ -323,7 +321,6 @@ class GraficoRelatorio:
                     layout_europa = Layout(titulo='Top 10 - Editora na Europa',
                                            y_label='Vendas')
                     layout_europa.layout_venda_europa(2)
-
                 elif c == 5:
                     layout_japao = Layout(titulo='Top 10 - Editora Japão',
                                                  y_label='Density', x_label='Global')
