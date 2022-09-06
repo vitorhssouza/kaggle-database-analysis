@@ -182,7 +182,7 @@ class Layout:
                           by: Vitor Souza
                         '''
             fig.text(0.5, -0.01, rodape, ha='center', va='bottom', size=12, color='#938ca1')
-            plt.show()
+
 
 
 class Grafico(BaseDados):
