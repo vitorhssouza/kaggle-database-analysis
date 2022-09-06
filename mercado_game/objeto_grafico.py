@@ -156,28 +156,20 @@ class Layout:
         fig.set_facecolor(self.__cor_fundo)
         plt.style.use(self.__estilo)
         plt.suptitle(self.__titulo, fontsize=18, color='#404040', fontweight=400)
+        plt.subplots_adjust(hspace=0.35, wspace=0.15)
+        rodape = '''
+                                         Esse relatório foi elaborado no treinamento "Python para Análise de Dados"
+                                         está dispónivel no canal do youtube @Data Viking
+                                         by: Vitor Souza
+                                       '''
+        fig.text(0.5, -0.01, rodape, ha='center', va='bottom', size=12, color='#938ca1')
         if opcao == 1:
             grafico_relatorio = GraficoRelatorio()
             grafico_relatorio.relatorio1()
-            plt.subplots_adjust(hspace=0.35, wspace=0.15)
-            rodape = '''
-                                 Esse relatório foi elaborado no treinamento "Python para Análise de Dados"
-                                 está dispónivel no canal do youtube @Data Viking
-                                 by: Vitor Souza
-                               '''
-            fig.text(0.5, -0.01, rodape, ha='center', va='bottom', size=12, color='#938ca1')
             plt.show()
         else:
             grafico_relatorio2 = GraficoRelatorio()
             grafico_relatorio2.relatorio2()
-            plt.subplots_adjust(hspace=0.35, wspace=0.15)
-            rodape = '''
-                                             Esse relatório foi elaborado no treinamento "Python para Análise de Dados"
-                                             está dispónivel no canal do youtube @Data Viking
-                                             by: Vitor Souza
-                                           '''
-            fig.text(0.5, -0.01, rodape, ha='center', va='bottom', size=12, color='#938ca1')
-
 
 
 class Grafico(BaseDados):
