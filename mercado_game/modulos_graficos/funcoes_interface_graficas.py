@@ -1,6 +1,6 @@
 from mercado_game.objeto_dados import BaseDados
 from mercado_game.objeto_grafico import Layout
-from mercado_game.objeto_relatorio import GraficoRelatorio
+
 from time import sleep
 
 dados = BaseDados('PS4_GamesSales.csv')
@@ -129,8 +129,11 @@ def escolha_opcao(opcao: int) -> None:
         sleep(2)
         menu()
     elif opcao == 12:
-        grafico = GraficoRelatorio('PS4_GamesSales.csv')
-        grafico.relatorio()
+        print('Imprimindo os relátorio contendo os gráficos')
+        sleep(2)
+        layout_relatorio = Layout(tamanho=(18, 15), cor_fundo='#f5f5f5', estilo='seaborn',
+                                  titulo='Python para Análise de Dados \n Projeto prático 5 - Análise Mercado de Games PS4')
+        layout_relatorio.layout_relatorio()
         menu()
     elif opcao == 13:
         print('Saindo do sistema')
