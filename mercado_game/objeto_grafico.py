@@ -1,8 +1,6 @@
 from mercado_game.objeto_dados import BaseDados
-#from mercado_game.objeto_relatorio import GraficoRelatorio
+from time import sleep
 import matplotlib.pyplot as plt
-
-
 import seaborn as sns
 
 paletas_cores = sns.color_palette('Dark2', 8)
@@ -99,7 +97,7 @@ class Layout:
             plt.ylabel(self.__y_label, fontsize=7)
             grafico_america = Grafico('PS4_GamesSales.csv')
             grafico_america.grafico_vendas_america(2)
-            plt.xticks(rotation=45)
+            plt.xticks(rotation=45, ha='right', fontsize=5)
 
     def layout_venda_europa(self, opcao: int = 1):
         if opcao == 1:
@@ -116,44 +114,75 @@ class Layout:
             plt.ylabel(self.__y_label, fontsize=7)
             grafico_europa = Grafico('PS4_GamesSales.csv')
             grafico_europa.grafico_vendas_europa(2)
-            plt.xticks(rotation=45)
+            plt.xticks(rotation=45, ha='right', fontsize=5)
 
-    def layout_venda_japao(self):
-        plt.figure(figsize=(self.__tamanho))
-        plt.title(self.__titulo)
-        plt.ylabel(self.__y_label, fontsize=14)
-        plt.xlabel(self.__x_label, fontsize=14)
-        grafico_japao = Grafico('PS4_GamesSales.csv')
-        grafico_japao.grafico_vendas_japao()
-        plt.legend(fontsize=12)
-        plt.show()
+    def layout_venda_japao(self, opcao: int = 1):
+        if opcao == 1:
+            plt.figure(figsize=(self.__tamanho))
+            plt.title(self.__titulo)
+            plt.ylabel(self.__y_label, fontsize=14)
+            plt.xlabel(self.__x_label, fontsize=14)
+            grafico_japao = Grafico('PS4_GamesSales.csv')
+            grafico_japao.grafico_vendas_japao()
+            plt.legend(fontsize=12)
+            plt.show()
+        else:
+            plt.title(self.__titulo, loc='left', fontsize=10)
+            plt.ylabel(self.__y_label, fontsize=7)
+            grafico_japao = Grafico('PS4_GamesSales.csv')
+            grafico_japao.grafico_vendas_japao(2)
+            plt.xticks(rotation=45, ha='right', fontsize=5)
 
-    def layout_venda_mundo(self):
-        plt.figure(figsize=(self.__tamanho))
-        plt.title(self.__titulo)
-        plt.ylabel(self.__y_label, fontsize=14)
-        plt.xlabel(self.__x_label, fontsize=14)
-        grafico_mundo = Grafico('PS4_GamesSales.csv')
-        grafico_mundo.grafico_vendas_mundo()
-        plt.legend(fontsize=12)
-        plt.show()
+    def layout_venda_mundo(self, opcao: int = 1):
+        if opcao == 1:
+            plt.figure(figsize=(self.__tamanho))
+            plt.title(self.__titulo)
+            plt.ylabel(self.__y_label, fontsize=14)
+            plt.xlabel(self.__x_label, fontsize=14)
+            grafico_mundo = Grafico('PS4_GamesSales.csv')
+            grafico_mundo.grafico_vendas_mundo()
+            plt.legend(fontsize=12)
+            plt.show()
+        else:
+            plt.title(self.__titulo, loc='left', fontsize=10)
+            plt.ylabel(self.__y_label, fontsize=7)
+            grafico_japao = Grafico('PS4_GamesSales.csv')
+            grafico_japao.grafico_vendas_japao(2)
+            plt.xticks(rotation=45, ha='right', fontsize=5)
 
-    def layout_relatorio(self):
-        fig, ax = plt.subplots(figsize=(self.__tamanho))
-        ax.set_facecolor(self.__cor_fundo)
-        fig.set_facecolor(self.__cor_fundo)
-        plt.style.use(self.__estilo)
-        plt.suptitle(self.__titulo, fontsize=18, color='#404040', fontweight=400)
-        grafico_relatorio = GraficoRelatorio()
-        grafico_relatorio.relatorio1()
-        plt.subplots_adjust(hspace=0.35, wspace=0.15)
-        rodape = '''
-          Esse relatório foi elaborado no treinamento "Python para Análise de Dados"
-          está dispónivel no canal do youtube @Data Viking
-          by: Vitor Souza
-        '''
-        fig.text(0.5, -0.01, rodape, ha='center', va='bottom', size=12, color='#938ca1')
-        plt.show()
+    def layout_relatorio(self, opcao: int = 1):
+        if opcao == 1:
+            fig, ax = plt.subplots(figsize=(self.__tamanho))
+            ax.set_facecolor(self.__cor_fundo)
+            fig.set_facecolor(self.__cor_fundo)
+            plt.style.use(self.__estilo)
+            plt.suptitle(self.__titulo, fontsize=18, color='#404040', fontweight=400)
+            grafico_relatorio = GraficoRelatorio()
+            grafico_relatorio.relatorio1()
+            plt.subplots_adjust(hspace=0.35, wspace=0.15)
+            rodape = '''
+              Esse relatório foi elaborado no treinamento "Python para Análise de Dados"
+              está dispónivel no canal do youtube @Data Viking
+              by: Vitor Souza
+            '''
+            fig.text(0.5, -0.01, rodape, ha='center', va='bottom', size=12, color='#938ca1')
+            plt.show()
+        else:
+            fig, ax = plt.subplots(figsize=(self.__tamanho))
+            ax.set_facecolor(self.__cor_fundo)
+            fig.set_facecolor(self.__cor_fundo)
+            plt.style.use(self.__estilo)
+            plt.suptitle(self.__titulo, fontsize=18, color='#404040', fontweight=400)
+            grafico_relatorio2 = GraficoRelatorio()
+            grafico_relatorio2.relatorio2()
+            plt.subplots_adjust(hspace=0.35, wspace=0.15)
+            rodape = '''
+                          Esse relatório foi elaborado no treinamento "Python para Análise de Dados"
+                          está dispónivel no canal do youtube @Data Viking
+                          by: Vitor Souza
+                        '''
+            fig.text(0.5, -0.01, rodape, ha='center', va='bottom', size=12, color='#938ca1')
+            plt.show()
 
 
 class Grafico(BaseDados):
@@ -179,7 +208,7 @@ class Grafico(BaseDados):
         return self.__grafico_bar
 
     def grafico_distribuicao(self: object) -> None:
-        self.__grafico_distribuicao = sns.kdeplot(self._BaseDados__base['Global'], shade=True, bw=1,
+        self.__grafico_distribuicao = sns.kdeplot(self._BaseDados__base['Global'], shade=True, bw_adjust=3,
                                                   color='#96a8a8', linewidth=2.5)
         return self.__grafico_distribuicao
 
@@ -241,19 +270,31 @@ class Grafico(BaseDados):
             self.__grafico_vendas_europa = plt.bar(top_fabricante, top_vendas, color='#f44e3f', width=0.3)
             return self.__grafico_vendas_europa
 
-    def grafico_vendas_japao(self: object) -> None:
-        grupos = list(range(1, 11))
-        top_vendas = self._BaseDados__vendas_japao['Japan'][:10].values
-        top_fabricante = self._BaseDados__vendas_japao['Publisher'][:10].values
-        self.__grafico_vendas_japao = plt.bar(grupos, top_vendas, color='#f44e3f', width=0.3, label=top_fabricante)
-        return self.__grafico_vendas_japao
+    def grafico_vendas_japao(self: object, opcao: int = 1) -> None:
+        if opcao == 1:
+            grupos = list(range(1, 11))
+            top_vendas = self._BaseDados__vendas_japao['Japan'][:10].values
+            top_fabricante = self._BaseDados__vendas_japao['Publisher'][:10].values
+            self.__grafico_vendas_japao = plt.bar(grupos, top_vendas, color='#f44e3f', width=0.3, label=top_fabricante)
+            return self.__grafico_vendas_japao
+        else:
+            top_vendas = self._BaseDados__vendas_japao['Japan'][:10].values
+            top_fabricante = self._BaseDados__vendas_japao['Publisher'][:10].values
+            self.__grafico_vendas_japao = plt.bar(top_fabricante, top_vendas, color='#f44e3f', width=0.3)
+            return self.__grafico_vendas_japao
 
-    def grafico_vendas_mundo(self: object) -> None:
-        grupos = list(range(1, 11))
-        top_vendas = self._BaseDados__vendas_mundo['Rest of World'][:10].values
-        top_fabricante = self._BaseDados__vendas_mundo['Publisher'][:10].values
-        self.__grafico_vendas_mundo = plt.bar(grupos, top_vendas, color='#f44e3f', width=0.3, label=top_fabricante)
-        return self.__grafico_vendas_mundo
+    def grafico_vendas_mundo(self: object, opcao: int = 1) -> None:
+        if opcao == 1:
+            grupos = list(range(1, 11))
+            top_vendas = self._BaseDados__vendas_mundo['Rest of World'][:10].values
+            top_fabricante = self._BaseDados__vendas_mundo['Publisher'][:10].values
+            self.__grafico_vendas_mundo = plt.bar(grupos, top_vendas, color='#f44e3f', width=0.3, label=top_fabricante)
+            return self.__grafico_vendas_mundo
+        else:
+            top_vendas = self._BaseDados__vendas_mundo['Rest of World'][:10].values
+            top_fabricante = self._BaseDados__vendas_mundo['Publisher'][:10].values
+            self.__grafico_vendas_mundo = plt.bar(top_fabricante, top_vendas, color='#f44e3f', width=0.3)
+            return self.__grafico_vendas_mundo
 
 
 class GraficoRelatorio:
@@ -279,11 +320,10 @@ class GraficoRelatorio:
                     layout_continente = Layout(titulo='Análise da Distribuição Por Continentes',
                                                y_label='Distribuição')
                     layout_continente.layout_distribuicao_continente(2)
-            else:
-                print('')
 
-        relatorio2 = GraficoRelatorio()
-        relatorio2.relatorio2()
+        layout = Layout(tamanho=(18, 15), cor_fundo='#f5f5f5', estilo='seaborn',
+                        titulo='Python para Análise de Dados \n Projeto prático 5 - Análise Mercado de Games PS4')
+        layout.layout_relatorio(2)
 
     def relatorio2(self):
         linhas = 6
@@ -292,23 +332,22 @@ class GraficoRelatorio:
             if c != 3 and c != 4:
                 plt.subplot(linhas, colunas, c)
                 if c == 1:
-                    layout_america = Layout(titulo='Top 10 - Fabricante na America do Norte', y_label='Vendas')
+                    layout_america = Layout(titulo='Top 10 - Editora na America do Norte', y_label='Vendas')
                     layout_america.layout_venda_america(2)
                 elif c == 2:
-                    layout_europa = Layout(titulo='Top 10 - Fabricante na Europa',
+                    layout_europa = Layout(titulo='Top 10 - Editora na Europa',
                                            y_label='Vendas')
                     layout_europa.layout_venda_europa(2)
 
                 elif c == 5:
-                    layout_distribuicao = Layout(titulo='Distribuição das Vendas Globais',
+                    layout_japao = Layout(titulo='Top 10 - Editora Japão',
                                                  y_label='Density', x_label='Global')
-                    layout_distribuicao.layout_distribuicao(2)
+                    layout_japao.layout_venda_japao(2)
                 elif c == 6:
-                    layout_continente = Layout(titulo='Análise da Distribuição Por Continentes',
-                                               y_label='Distribuição')
-                    layout_continente.layout_distribuicao_continente(2)
-            else:
-                print('')
+                    layout_mundo = Layout(titulo='Top 10 - Editora no Restante do Mundo',
+                                          y_label='Distribuição')
+                    layout_mundo.layout_venda_mundo(2)
+
 
 
 
